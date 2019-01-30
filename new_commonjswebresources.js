@@ -70,7 +70,11 @@ function GetRoleName(roleId)
     //var serverUrl = Xrm.Page.context.getServerUrl();
 //   var serverUrl = location.protocol + "//" + location.host + "/" + Xrm.Page.context.getOrgUniqueName();
 //  fullpage to new is:  https://coradixdemo.api.crm.dynamics.com/XRMServices/2011/OrganizationData.svc
-   var serverUrl = location.protocol + "//" + location.host ;
+	
+   var hostnm = location.host;
+   var newstr = hostnm.replace(".crm.",".api.crm.");
+   var serverUrl = location.protocol + "//" + newstr;
+
    var odataSelect = serverUrl + "/XRMServices/2011/OrganizationData.svc" + "/" + "RoleSet?$filter=RoleId eq guid'" + roleId + "'";
     var roleName = null;
 
